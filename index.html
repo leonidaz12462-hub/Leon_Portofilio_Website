@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Menentukan karakter yang digunakan website -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat website responsif di HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul yang muncul di tab browser -->
+    <title>Leon — VFX Artist & Pengembang Roblox</title>
+
+    <!-- Menghubungkan HTML dengan CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+         ========================= -->
+
+    <header>
+
+        <!-- Nama pemilik website -->
+        <h1>✦ Leon ✦</h1>
+
+        <!-- Deskripsi singkat -->
+        <p data-id="headerDesc">
+            • VFX Artist, Pengembang Roblox & Web Developer Pemula
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         PANEL PENGATURAN
+         ========================= -->
+
+    <div class="settings">
+
+        <!-- Pilihan bahasa -->
+        <select id="languageSelect" data-title-id="langLabel" aria-label="Pilih bahasa">
+            <option value="id">🇮🇩 Indonesia</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+
+
+        <!-- Saklar mode terang / gelap -->
+        <button
+            id="themeSwitch"
+            class="theme-switch"
+            role="switch"
+            aria-checked="false"
+            data-title-id="titleTheme"
+            title="Ganti mode (T)"
+            aria-label="Ganti mode (T)"
+        >
+            <span class="switch-track">
+                <span class="switch-star s1"></span>
+                <span class="switch-star s2"></span>
+                <span class="switch-star s3"></span>
+                <span class="switch-cloud"></span>
+                <span class="switch-thumb"></span>
+            </span>
+        </button>
+
+
+        <!-- Pilihan warna tema -->
+        <div class="accent-picker">
+
+            <button
+                id="accentButton"
+                class="icon-button"
+                aria-expanded="false"
+                data-title-id="titleAccent"
+                title="Ganti warna (C)"
+                aria-label="Ganti warna (C)"
+            >
+                🎨
+            </button>
+
+            <div class="accent-menu" id="accentMenu">
+                <button class="accent-dot" data-accent="blue"></button>
+                <button class="accent-dot" data-accent="purple"></button>
+                <button class="accent-dot" data-accent="green"></button>
+                <button class="accent-dot" data-accent="pink"></button>
+                <button class="accent-dot" data-accent="orange"></button>
+            </div>
+
+        </div>
+
+
+        <!-- Panel pintasan keyboard -->
+        <button
+            id="helpToggle"
+            class="icon-button"
+            data-title-id="titleHelp"
+            title="Pintasan keyboard (?)"
+            aria-label="Pintasan keyboard (?)"
+        >
+            ?
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGASI
+         ========================= -->
+
+    <nav>
+
+        <a href="index.html" class="active" data-id="home">
+            Beranda
+        </a>
+
+        <a href="about.html" data-id="about">
+            Tentang Saya
+        </a>
+
+    </nav>
+
+
+    <main>
+
+        <!-- =========================
+             HERO
+             ========================= -->
+
+        <section class="hero">
+
+            <!-- Dekorasi sudut -->
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+
+            <div class="hero-text">
+
+                <!-- Label kecil -->
+                <span class="small-title" data-id="welcome">
+                    ✦ SELAMAT DATANG DI PORTOFOLIO SAYA
+                </span>
+
+
+                <!-- Nama -->
+                <h2 data-id="heroName">
+                    Saya <span>Leon</span>
+                </h2>
+
+
+                <!-- Bidang yang dikerjakan (efek mengetik) -->
+                <h3 class="typewriter" id="typewriter">
+                    <span id="typedText" aria-hidden="true">VFX Artist</span><span class="caret" aria-hidden="true"></span>
+                </h3>
+
+
+                <!-- Deskripsi -->
+                <p data-id="heroDesc">
+                    Saya membuat visual effects, game Roblox,
+                    asset 3D, dan website sederhana.
+                    Saya masih belajar Web Development dan
+                    terus mencoba membuat berbagai project kreatif.
+                </p>
+
+
+                <!-- Tombol -->
+                <div class="hero-buttons">
+
+                    <a href="#skills" class="main-button" data-id="viewSkills">
+                        Lihat Kemampuan Saya →
+                    </a>
+
+                    <a href="about.html" class="second-button" data-id="aboutButton">
+                        Tentang Saya
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             YANG SAYA KERJAKAN
+             ========================= -->
+
+        <section class="section-box" id="skills">
+
+            <h2 data-id="workTitle">
+                ✦ Yang Saya Kerjakan
+            </h2>
+
+
+            <p class="section-description" data-id="workDesc">
+                Beberapa bidang yang saya sukai dan sedang saya pelajari.
+            </p>
+
+
+            <div class="info-grid">
+
+                <!-- VFX -->
+                <div class="info-box reveal">
+
+                    <div class="card-icon">⚡</div>
+
+                    <h3 data-id="vfxTitle">VFX Artist</h3>
+
+                    <p data-id="vfxDesc">
+                        Membuat particle, energy effect,
+                        trail, dan berbagai visual effect
+                        untuk project Roblox.
+                    </p>
+
+                    <!-- Teks tombol dibuat otomatis oleh JavaScript -->
+                    <button class="copy-button" data-copy="Blender App">
+                        Salin: Blender App
+                    </button>
+
+                    <!-- Tombol Preview: klik untuk membuka gambar VFX -->
+                    <button class="copy-button" id="previewOpen" data-id="previewButton">
+                        🖼️ Pratinjau
+                    </button>
+
+                </div>
+
+
+                <!-- ROBLOX -->
+                <div class="info-box reveal">
+
+                    <div class="card-icon">🎮</div>
+
+                    <h3 data-id="robloxTitle">Pengembang Roblox</h3>
+
+                    <p data-id="robloxDesc">
+                        Membuat game, sistem, gameplay,
+                        mekanik permainan, dan pengalaman
+                        interaktif di Roblox.
+                    </p>
+
+                    <button class="copy-button" data-copy="Roblox Studio">
+                        Salin: Roblox Studio
+                    </button>
+
+                </div>
+
+
+                <!-- BLENDER / 3D -->
+                <div class="info-box reveal">
+
+                    <div class="card-icon">🧊</div>
+
+                    <h3 data-id="blenderTitle">Pemodelan 3D</h3>
+
+                    <p data-id="blenderDesc">
+                        Membuat model 3D sederhana dan
+                        berbagai asset menggunakan Blender.
+                    </p>
+
+                    <button class="copy-button" data-copy="Blender App">
+                        Salin: Blender App
+                    </button>
+
+                </div>
+
+
+                <!-- WEB DEVELOPMENT -->
+                <div class="info-box reveal">
+
+                    <div class="card-icon">💻</div>
+
+                    <h3 data-id="webTitle">Web Development</h3>
+
+                    <p data-id="webDesc">
+                        Saya sedang belajar Web Development
+                        dan masih pemula. Saya membuat website
+                        sederhana menggunakan HTML, CSS,
+                        dan JavaScript.
+                    </p>
+
+                    <button class="copy-button" data-copy="HTML, CSS & JavaScript">
+                        Salin: HTML, CSS & JavaScript
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INFORMASI SINGKAT
+             ========================= -->
+
+        <section class="about-frame reveal">
+
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+
+            <h2 data-id="learningTitle">
+                ✦ Terus Belajar & Berkembang
+            </h2>
+
+
+            <p data-id="learningDesc">
+                Saya masih terus belajar berbagai hal tentang
+                VFX, Roblox Studio, Blender, dan Web Development.
+                Saya ingin terus meningkatkan kemampuan saya
+                dan membuat karya yang semakin baik.
+            </p>
+
+
+            <a href="about.html" class="main-button" data-id="learnMore">
+                Kenali Saya Lebih Jauh →
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         POP-UP GAMBAR PREVIEW VFX
+         Gambar ada di: images/vfx-preview.png
+         ========================= --
+
+    <div id="previewModal" class="preview-modal" role="dialog" aria-modal="true">
+
+        <div class="preview-box">
+
+            <button id="previewClose" class="icon-button" aria-label="Tutup" title="Tutup">
+                ✕
+            </button>
+
+    <img src="images/vfx-preview.jpg" alt="VFX preview">
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         TOMBOL KEMBALI KE ATAS
+         ========================= -->
+
+    <button id="backToTop" data-title-id="titleTop" title="Kembali ke atas" aria-label="Kembali ke atas">
+        ↑
+    </button>
+
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+
+    <footer>
+        <p data-id="footer">
+            Dibuat oleh Leon © 2026
+        </p>
+    </footer>
+
+
+    <!-- Menghubungkan JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

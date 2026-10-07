@@ -1,0 +1,2041 @@
+/* ==================================================
+   RESET
+   Mengatur ukuran semua elemen agar lebih mudah
+   dikontrol.
+================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* Membuat perpindahan scroll menjadi halus */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ==================================================
+   WARNA DEFAULT
+   Semua warna dibuat dari satu angka: --hue.
+   Ganti --hue = ganti warna seluruh website.
+   (200 = biru, 270 = ungu, 150 = hijau,
+    330 = pink, 25 = oranye)
+================================================== */
+
+:root {
+    --hue: 200;
+
+    --background: hsl(var(--hue) 100% 97%);
+    --card: #ffffff;
+    --card-soft: hsl(var(--hue) 100% 97%);
+
+    --primary: hsl(var(--hue) 48% 43%);
+    --secondary: hsl(var(--hue) 44% 46%);
+    --on-primary: #ffffff;
+
+    --text: hsl(var(--hue) 18% 32%);
+    --muted: hsl(var(--hue) 19% 45%);
+
+    --border: hsl(var(--hue) 80% 78%);
+    --shadow: hsl(var(--hue) 82% 88%);
+
+    --hover: hsl(var(--hue) 100% 94%);
+    --accent: hsl(var(--hue) 67% 62%);
+}
+
+
+/* ==================================================
+   DARK MODE
+================================================== */
+
+body.dark {
+    --background: hsl(var(--hue) 60% 7%);
+    --card: hsl(var(--hue) 54% 11%);
+    --card-soft: hsl(var(--hue) 56% 14%);
+
+    --primary: hsl(var(--hue) 74% 70%);
+    --secondary: hsl(var(--hue) 70% 68%);
+    --on-primary: hsl(var(--hue) 60% 8%);
+
+    --text: hsl(var(--hue) 100% 93%);
+    --muted: hsl(var(--hue) 40% 72%);
+
+    --border: hsl(var(--hue) 53% 33%);
+    --shadow: hsl(var(--hue) 60% 5%);
+
+    --hover: hsl(var(--hue) 61% 18%);
+    --accent: hsl(var(--hue) 75% 65%);
+}
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+/* ==================================================
+   SCROLL PROGRESS BAR
+   Garis di atas layar yang memanjang saat scroll.
+================================================== */
+
+#scrollProgress {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        var(--primary)
+    );
+
+    transform-origin: left;
+    transform: scaleX(0);
+
+    z-index: 200;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+header {
+    margin: 25px;
+    padding: 30px;
+
+    background: var(--hover);
+
+    border: 3px solid var(--border);
+    border-radius: 28px;
+
+    text-align: center;
+
+    box-shadow: 7px 7px 0 var(--shadow);
+
+    position: relative;
+
+    transition: 0.3s ease;
+}
+
+
+header:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 10px 12px 0 var(--shadow);
+}
+
+
+/* Bintang kiri atas */
+
+header::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 25px;
+    top: 15px;
+
+    font-size: 28px;
+
+    color: var(--accent);
+
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+
+/* Bintang kanan bawah */
+
+header::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 25px;
+    bottom: 10px;
+
+    font-size: 25px;
+
+    color: var(--accent);
+
+    animation: twinkle 3s ease-in-out 1.5s infinite;
+}
+
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1;   transform: scale(1) rotate(0deg); }
+    50%      { opacity: 0.4; transform: scale(0.75) rotate(45deg); }
+}
+
+
+header h1 {
+    margin: 0;
+
+    color: var(--primary);
+
+    font-size: 35px;
+}
+
+
+header p {
+    color: var(--muted);
+
+    margin-bottom: 0;
+}
+
+
+/* ==================================================
+   SETTINGS
+================================================== */
+
+.settings {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    justify-content: flex-end;
+
+    margin: 10px 30px;
+}
+
+
+.settings select,
+.icon-button {
+    height: 40px;
+
+    background: var(--card);
+
+    border: 2px solid var(--border);
+
+    border-radius: 12px;
+
+    padding: 0 12px;
+
+    color: var(--text);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.icon-button {
+    min-width: 40px;
+
+    font-weight: bold;
+}
+
+
+.settings select:hover,
+.icon-button:hover {
+    transform: translateY(-3px);
+
+    background: var(--hover);
+}
+
+
+/* ==================================================
+   THEME SWITCH
+   Saklar geser matahari / bulan.
+================================================== */
+
+.theme-switch {
+    padding: 0;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 999px;
+}
+
+
+.switch-track {
+    position: relative;
+
+    display: block;
+
+    width: 70px;
+    height: 36px;
+
+    border-radius: 999px;
+
+    border: 2px solid var(--border);
+
+    /* Langit siang */
+    background: linear-gradient(135deg, #8fd8ff, #d7f3ff);
+
+    overflow: hidden;
+
+    transition:
+        background 0.5s ease,
+        border-color 0.3s ease;
+}
+
+
+/* Langit malam */
+
+body.dark .switch-track {
+    background: linear-gradient(135deg, #0b1d3a, #283b6b);
+}
+
+
+/* Bulatan yang bergeser */
+
+.switch-thumb {
+    position: absolute;
+
+    top: 3px;
+    left: 3px;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    /* Matahari */
+    background: radial-gradient(circle at 35% 35%, #fff6b0, #ffc93c 60%, #ffa600);
+
+    box-shadow: 0 0 10px 2px rgba(255, 200, 60, 0.7);
+
+    transition:
+        transform 0.5s cubic-bezier(0.68, -0.4, 0.3, 1.4),
+        background 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+
+/* Bulan: geser ke kanan + bayangan kawah */
+
+body.dark .switch-thumb {
+    transform: translateX(34px) rotate(-30deg);
+
+    background: radial-gradient(circle at 35% 35%, #ffffff, #dfe6f5 60%, #b9c4dc);
+
+    box-shadow:
+        inset -6px -3px 0 0 #c3cde3,
+        0 0 10px 2px rgba(200, 220, 255, 0.45);
+}
+
+
+/* Bintang kecil (muncul saat malam) */
+
+.switch-star {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    transform: translateY(8px);
+
+    transition: 0.5s ease;
+}
+
+.switch-star.s1 { left: 10px; top: 8px; }
+.switch-star.s2 { left: 20px; top: 20px; width: 2px; height: 2px; }
+.switch-star.s3 { left: 30px; top: 10px; }
+
+body.dark .switch-star {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* Awan kecil (muncul saat siang) */
+
+.switch-cloud {
+    position: absolute;
+
+    right: 8px;
+    top: 15px;
+
+    width: 22px;
+    height: 8px;
+
+    background: white;
+
+    border-radius: 999px;
+
+    transition: 0.5s ease;
+}
+
+.switch-cloud::before {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: -5px;
+
+    width: 10px;
+    height: 10px;
+
+    background: white;
+
+    border-radius: 50%;
+}
+
+body.dark .switch-cloud {
+    opacity: 0;
+
+    transform: translateY(14px);
+}
+
+
+.theme-switch:hover .switch-track {
+    border-color: var(--accent);
+}
+
+
+.theme-switch:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+
+/* ==================================================
+   ACCENT PICKER
+   Menu kecil untuk memilih warna tema.
+================================================== */
+
+.accent-picker {
+    position: relative;
+}
+
+
+.accent-menu {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    right: 0;
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    background: var(--card);
+
+    border: 2px solid var(--border);
+
+    border-radius: 16px;
+
+    box-shadow: 4px 4px 0 var(--shadow);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(-6px);
+
+    transition: 0.2s ease;
+
+    z-index: 120;
+}
+
+
+.accent-menu.open {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+.accent-dot {
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    border: 3px solid var(--card);
+
+    outline: 2px solid transparent;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.accent-dot[data-accent="blue"]   { background: hsl(200 70% 55%); }
+.accent-dot[data-accent="purple"] { background: hsl(265 70% 60%); }
+.accent-dot[data-accent="green"]  { background: hsl(150 60% 45%); }
+.accent-dot[data-accent="pink"]   { background: hsl(330 75% 60%); }
+.accent-dot[data-accent="orange"] { background: hsl(25 90% 55%); }
+
+
+.accent-dot:hover {
+    transform: scale(1.15);
+}
+
+
+.accent-dot.active {
+    outline-color: var(--primary);
+}
+
+
+/* ==================================================
+   NAVIGASI
+================================================== */
+
+nav {
+    text-align: center;
+
+    margin: 25px;
+}
+
+
+nav a {
+    display: inline-block;
+
+    padding: 11px 20px;
+
+    margin: 5px;
+
+    background: var(--card);
+
+    border: 2px solid var(--border);
+
+    border-radius: 18px;
+
+    color: var(--secondary);
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    box-shadow: 3px 3px 0 var(--shadow);
+
+    transition: 0.2s ease;
+}
+
+
+nav a:hover {
+    transform: translateY(-4px);
+
+    background: var(--hover);
+
+    box-shadow: 5px 6px 0 var(--shadow);
+}
+
+
+nav a.active {
+    background: var(--hover);
+
+    border-color: var(--accent);
+}
+
+
+/* ==================================================
+   MAIN
+================================================== */
+
+main {
+    width: min(1100px, 92%);
+
+    margin: auto;
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    position: relative;
+
+    padding: 75px 60px;
+
+    margin-bottom: 40px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 32px;
+
+    box-shadow: 9px 9px 0 var(--shadow);
+
+    overflow: hidden;
+
+    transition: 0.3s ease;
+}
+
+
+.hero:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 12px 12px 0 var(--shadow);
+}
+
+
+.hero-text {
+    max-width: 750px;
+
+    margin: auto;
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+.small-title {
+    display: inline-block;
+
+    margin-bottom: 15px;
+
+    padding: 7px 14px;
+
+    background: var(--hover);
+
+    border-radius: 15px;
+
+    color: var(--secondary);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.hero h2 {
+    margin: 10px 0;
+
+    font-size: 48px;
+
+    color: var(--primary);
+}
+
+
+.hero h2 span {
+    color: var(--secondary);
+}
+
+
+.hero h3 {
+    margin: 10px 0 20px;
+
+    color: var(--text);
+
+    font-size: 22px;
+}
+
+
+.hero p {
+    max-width: 680px;
+
+    margin: auto;
+
+    line-height: 1.8;
+
+    color: var(--muted);
+
+    font-size: 16px;
+}
+
+
+/* ==================================================
+   TYPEWRITER
+================================================== */
+
+.typewriter {
+    min-height: 1.4em;
+}
+
+
+#typedText {
+    color: var(--primary);
+}
+
+
+/* Garis kedip seperti kursor mengetik */
+
+.caret {
+    display: inline-block;
+
+    width: 3px;
+    height: 1.1em;
+
+    margin-left: 4px;
+
+    vertical-align: -0.15em;
+
+    background: var(--accent);
+
+    border-radius: 2px;
+
+    animation: blink 0.9s steps(1) infinite;
+}
+
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+
+/* ==================================================
+   HERO BUTTONS
+================================================== */
+
+.hero-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.main-button,
+.second-button {
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+
+.main-button {
+    background: var(--primary);
+
+    /* Warna teks otomatis kontras di light & dark */
+    color: var(--on-primary);
+
+    border: 2px solid var(--primary);
+}
+
+
+.second-button {
+    background: var(--card);
+
+    color: var(--secondary);
+
+    border: 2px solid var(--border);
+}
+
+
+.main-button:hover,
+.second-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 4px 5px 0 var(--shadow);
+}
+
+
+/* ==================================================
+   CORNER DECORATION
+================================================== */
+
+.corner {
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border: 3px solid var(--border);
+}
+
+
+.top-left {
+    top: 18px;
+    left: 18px;
+
+    border-right: none;
+    border-bottom: none;
+}
+
+
+.top-right {
+    top: 18px;
+    right: 18px;
+
+    border-left: none;
+    border-bottom: none;
+}
+
+
+.bottom-left {
+    bottom: 18px;
+    left: 18px;
+
+    border-right: none;
+    border-top: none;
+}
+
+
+.bottom-right {
+    bottom: 18px;
+    right: 18px;
+
+    border-left: none;
+    border-top: none;
+}
+
+
+/* ==================================================
+   SECTION BOX
+================================================== */
+
+.section-box {
+    margin-bottom: 40px;
+
+    padding: 45px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow: 7px 7px 0 var(--shadow);
+}
+
+
+.section-box h2 {
+    margin-top: 0;
+
+    text-align: center;
+
+    color: var(--primary);
+
+    font-size: 30px;
+}
+
+
+.section-description {
+    text-align: center;
+
+    color: var(--muted);
+
+    margin-bottom: 35px;
+}
+
+
+/* ==================================================
+   INFO GRID
+================================================== */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+
+/* ==================================================
+   INFO BOX & ABOUT CARD
+================================================== */
+
+.info-box,
+.about-card {
+    position: relative;
+
+    padding: 28px;
+
+    background: var(--card-soft);
+
+    border: 2px solid var(--border);
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    transition: 0.25s ease;
+}
+
+
+.info-box:hover,
+.about-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 6px 7px 0 var(--shadow);
+}
+
+
+/* Kilau cahaya yang mengikuti mouse */
+
+.info-box::after,
+.about-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: radial-gradient(
+        circle at var(--mx, 50%) var(--my, 50%),
+        hsl(var(--hue) 90% 70% / 0.25),
+        transparent 55%
+    );
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+}
+
+
+.info-box:hover::after,
+.about-card:hover::after {
+    opacity: 1;
+}
+
+
+.card-icon {
+    font-size: 42px;
+
+    margin-bottom: 10px;
+}
+
+
+.info-box h3,
+.about-card h3 {
+    color: var(--primary);
+
+    margin: 8px 0 12px;
+
+    font-size: 21px;
+}
+
+
+.info-box p,
+.about-card p {
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==================================================
+   COPY BUTTON
+================================================== */
+
+.copy-button {
+    position: relative;
+
+    z-index: 1;
+
+    padding: 9px 14px;
+
+    border-radius: 12px;
+
+    border: 2px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--secondary);
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.copy-button:hover {
+    transform: translateY(-3px);
+
+    background: var(--hover);
+
+    box-shadow: 3px 4px 0 var(--shadow);
+}
+
+
+/* Tombol Preview (di sebelah tombol Salin) */
+
+#previewOpen {
+    margin-top: 8px;
+}
+
+
+/* ==================================================
+   AURORA BACKGROUND
+   3 cahaya blur yang bergerak pelan di belakang.
+================================================== */
+
+.aurora {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -1;
+}
+
+
+.blob {
+    position: absolute;
+
+    width: 45vmax;
+    height: 45vmax;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    opacity: 0.45;
+
+    animation: blob-float 22s ease-in-out infinite alternate;
+}
+
+
+.blob.b1 {
+    top: -15vmax;
+    left: -10vmax;
+
+    background: hsl(var(--hue) 90% 70%);
+}
+
+
+.blob.b2 {
+    bottom: -20vmax;
+    right: -10vmax;
+
+    background: hsl(calc(var(--hue) + 60) 85% 72%);
+
+    animation-duration: 26s;
+    animation-delay: -8s;
+}
+
+
+.blob.b3 {
+    top: 35%;
+    left: 40%;
+
+    width: 30vmax;
+    height: 30vmax;
+
+    background: hsl(calc(var(--hue) - 50) 85% 72%);
+
+    animation-duration: 30s;
+    animation-delay: -15s;
+}
+
+
+/* Di mode gelap cahayanya lebih redup */
+
+body.dark .blob {
+    opacity: 0.22;
+}
+
+
+@keyframes blob-float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(8vw, 6vh) scale(1.15); }
+    100% { transform: translate(-6vw, 10vh) scale(0.9); }
+}
+
+
+/* ==================================================
+   BINTANG MELAYANG
+================================================== */
+
+.float-layer {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.float-star {
+    position: absolute;
+
+    bottom: -30px;
+
+    color: var(--accent);
+
+    opacity: 0;
+
+    animation: star-rise linear infinite;
+}
+
+
+@keyframes star-rise {
+    0%   { transform: translateY(0) rotate(0deg);        opacity: 0; }
+    15%  { opacity: 0.7; }
+    85%  { opacity: 0.5; }
+    100% { transform: translateY(-420px) rotate(180deg); opacity: 0; }
+}
+
+
+/* ==================================================
+   NAMA BERKILAU
+   Tulisan "Leon" dengan warna yang bergerak.
+================================================== */
+
+.hero h2 span,
+.about-page h2 span {
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        hsl(calc(var(--hue) + 60) 80% 62%),
+        var(--accent),
+        var(--primary)
+    );
+
+    background-size: 300% 100%;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    animation: shimmer 5s linear infinite;
+}
+
+
+@keyframes shimmer {
+    to { background-position: 300% 0; }
+}
+
+
+/* ==================================================
+   MAKANAN FAVORIT - PIZZA
+================================================== */
+
+.fav-food {
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+
+    padding: 40px 45px;
+
+    margin-bottom: 40px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 28px;
+
+    box-shadow: 7px 7px 0 var(--shadow);
+}
+
+
+/* Tombol pizza bulat besar */
+
+.pizza-button {
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    border: 3px dashed hsl(30 90% 60%);
+
+    background: radial-gradient(circle, hsl(40 100% 92%), hsl(30 100% 82%));
+
+    font-size: 70px;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow: 0 0 0 8px hsl(35 100% 60% / 0.15);
+
+    animation: pizza-bob 3s ease-in-out infinite;
+
+    transition: box-shadow 0.3s ease;
+}
+
+
+body.dark .pizza-button {
+    background: radial-gradient(circle, hsl(35 60% 28%), hsl(25 60% 18%));
+}
+
+
+.pizza-button:hover {
+    box-shadow: 0 0 0 14px hsl(35 100% 60% / 0.2);
+}
+
+
+.pizza-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+
+/* Pizza naik-turun pelan */
+
+@keyframes pizza-bob {
+    0%, 100% { transform: translateY(0) rotate(-6deg); }
+    50%      { transform: translateY(-8px) rotate(6deg); }
+}
+
+
+/* Pizza berputar saat diklik */
+
+.pizza-button.spin {
+    animation: pizza-spin 0.8s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+
+@keyframes pizza-spin {
+    from { transform: rotate(0deg) scale(1); }
+    50%  { transform: rotate(200deg) scale(1.2); }
+    to   { transform: rotate(360deg) scale(1); }
+}
+
+
+.fav-text h3 {
+    margin: 6px 0 8px;
+
+    color: var(--primary);
+
+    font-size: 30px;
+}
+
+
+.fav-text p {
+    margin: 0 0 12px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+}
+
+
+.fav-hint {
+    color: var(--secondary);
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* Potongan pizza yang jatuh */
+
+.pizza-drop {
+    position: fixed;
+
+    top: -60px;
+
+    pointer-events: none;
+
+    z-index: 250;
+
+    animation: pizza-fall linear forwards;
+}
+
+
+@keyframes pizza-fall {
+    to {
+        transform: translateY(calc(100vh + 120px)) rotate(var(--spin, 360deg));
+    }
+}
+
+
+/* ==================================================
+   ABOUT / LEARNING FRAME
+================================================== */
+
+.about-frame {
+    position: relative;
+
+    padding: 55px 45px;
+
+    margin-bottom: 45px;
+
+    background: var(--hover);
+
+    border: 3px solid var(--border);
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow: 8px 8px 0 var(--shadow);
+}
+
+
+.about-frame h2 {
+    margin-top: 0;
+
+    color: var(--primary);
+
+    font-size: 30px;
+}
+
+
+.about-frame p {
+    max-width: 700px;
+
+    margin: 0 auto 28px;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   ABOUT PAGE
+================================================== */
+
+.about-page {
+    position: relative;
+
+    padding: 65px 45px;
+
+    margin-bottom: 40px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 32px;
+
+    text-align: center;
+
+    box-shadow: 9px 9px 0 var(--shadow);
+
+    overflow: hidden;
+}
+
+
+/* Isi tetap di atas bintang melayang */
+
+.about-page > span,
+.about-page > h2,
+.about-page > p {
+    position: relative;
+
+    z-index: 1;
+}
+
+
+.about-page h2 {
+    margin: 10px 0;
+
+    font-size: 42px;
+
+    color: var(--primary);
+}
+
+
+.about-page h2 span {
+    color: var(--secondary);
+}
+
+
+.about-page p {
+    max-width: 640px;
+
+    margin: 10px auto 0;
+
+    color: var(--muted);
+
+    line-height: 1.8;
+}
+
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ==================================================
+   BACK TO TOP
+================================================== */
+
+#backToTop {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    border: 2px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--primary);
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(15px);
+
+    transition: 0.3s ease;
+
+    box-shadow: 4px 4px 0 var(--shadow);
+
+    z-index: 100;
+}
+
+
+#backToTop.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+
+#backToTop:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ==================================================
+   TOAST NOTIFICATION
+================================================== */
+
+#toastContainer {
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    width: max-content;
+    max-width: calc(100% - 32px);
+
+    pointer-events: none;
+
+    z-index: 600;
+}
+
+
+.toast {
+    padding: 11px 18px;
+
+    background: var(--card);
+
+    color: var(--text);
+
+    border: 2px solid var(--border);
+
+    border-radius: 14px;
+
+    box-shadow: 4px 4px 0 var(--shadow);
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    animation: toast-in 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+
+.toast.leaving {
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition: 0.3s ease;
+}
+
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.9);
+    }
+}
+
+
+/* ==================================================
+   HELP PANEL / PINTASAN KEYBOARD
+================================================== */
+
+#helpOverlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 16px;
+
+    background: rgba(0, 10, 20, 0.45);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s ease;
+
+    z-index: 400;
+}
+
+
+#helpOverlay.open {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.help-panel {
+    width: min(420px, 100%);
+
+    padding: 30px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow: 8px 8px 0 var(--shadow);
+
+    transform: scale(0.92);
+
+    transition: transform 0.25s ease;
+}
+
+
+#helpOverlay.open .help-panel {
+    transform: scale(1);
+}
+
+
+.help-panel h2 {
+    margin-top: 0;
+
+    color: var(--primary);
+
+    text-align: center;
+}
+
+
+.help-panel ul {
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0 0 22px;
+}
+
+
+.help-panel li {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 0;
+
+    border-bottom: 1px dashed var(--border);
+
+    color: var(--muted);
+}
+
+
+.help-panel li:last-child {
+    border-bottom: none;
+}
+
+
+kbd {
+    min-width: 34px;
+
+    padding: 5px 8px;
+
+    background: var(--hover);
+
+    border: 2px solid var(--border);
+
+    border-bottom-width: 4px;
+
+    border-radius: 8px;
+
+    color: var(--primary);
+
+    font-family: inherit;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+.help-panel .main-button {
+    display: block;
+
+    width: 100%;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+
+/* ==================================================
+   PREVIEW IMAGE POP-UP (BARU)
+   Muncul saat tombol Preview diklik.
+================================================== */
+
+.preview-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    padding: 16px;
+
+    background: rgba(0, 10, 20, 0.7);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s ease;
+
+    z-index: 500;
+}
+
+
+.preview-modal.open {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.preview-box {
+    position: relative;
+
+    max-width: min(900px, 100%);
+
+    padding: 14px;
+
+    background: var(--card);
+
+    border: 3px solid var(--border);
+
+    border-radius: 24px;
+
+    box-shadow: 8px 8px 0 var(--shadow);
+
+    transform: scale(0.92);
+
+    transition: transform 0.25s ease;
+}
+
+
+.preview-modal.open .preview-box {
+    transform: scale(1);
+}
+
+
+.preview-box img {
+    display: block;
+
+    max-width: 100%;
+    max-height: 80vh;
+
+    margin: auto;
+
+    border-radius: 14px;
+}
+
+
+/* Tombol ✕ di pojok kanan atas gambar */
+
+.preview-box .icon-button {
+    position: absolute;
+
+    top: -14px;
+    right: -14px;
+
+    border-radius: 50%;
+
+    z-index: 2;
+}
+
+
+/* ==================================================
+   POWER UP / EASTER EGG
+   Aktif kalau pengunjung mengetik "vfx".
+================================================== */
+
+body.power-up header,
+body.power-up nav,
+body.power-up main {
+    animation: power-hue 1.2s linear infinite;
+}
+
+
+@keyframes power-hue {
+    to { filter: hue-rotate(360deg); }
+}
+
+
+/* ==================================================
+   SCROLL REVEAL
+================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* Kartu yang bisa miring (tilt) butuh transisi lebih cepat */
+
+.info-box.reveal.visible,
+.about-card.reveal.visible {
+    transition:
+        opacity 0.6s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+
+/* ==================================================
+   RESPONSIVE / HP
+================================================== */
+
+@media (max-width: 700px) {
+
+    header {
+        margin: 15px;
+
+        padding: 25px 18px;
+    }
+
+
+    header h1 {
+        font-size: 29px;
+    }
+
+
+    .settings {
+        margin: 10px 15px;
+
+        justify-content: center;
+    }
+
+
+    /* Pilihan bahasa di baris sendiri, tombol di bawahnya */
+
+    .settings select {
+        flex: 1 1 100%;
+    }
+
+
+    nav {
+        margin: 20px 10px;
+    }
+
+
+    nav a {
+        padding: 9px 14px;
+    }
+
+
+    main {
+        width: 94%;
+    }
+
+
+    .hero {
+        padding: 55px 22px;
+
+        border-radius: 25px;
+    }
+
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+
+    .hero h3 {
+        font-size: 18px;
+    }
+
+
+    .hero p {
+        font-size: 14px;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+
+    .main-button,
+    .second-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    .section-box {
+        padding: 30px 20px;
+    }
+
+
+    /* Kartu menjadi satu kolom */
+
+    .info-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+
+    .about-page {
+        padding: 50px 22px;
+    }
+
+
+    .about-page h2 {
+        font-size: 32px;
+    }
+
+
+    /* Pizza: gambar di atas, teks di bawah */
+
+    .fav-food {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 22px;
+
+        padding: 35px 22px;
+    }
+
+
+    .pizza-button {
+        width: 110px;
+        height: 110px;
+
+        font-size: 58px;
+    }
+
+
+    .about-frame {
+        padding: 45px 22px;
+    }
+
+
+    .about-frame h2 {
+        font-size: 25px;
+    }
+
+
+    /* Menu warna muncul di tengah di HP */
+
+    .accent-menu {
+        right: 50%;
+
+        transform: translate(50%, -6px);
+    }
+
+    .accent-menu.open {
+        transform: translate(50%, 0);
+    }
+
+
+    #backToTop {
+        right: 15px;
+
+        bottom: 15px;
+    }
+
+
+    /* Tombol ✕ preview masuk ke dalam di HP supaya tidak terpotong */
+
+    .preview-box .icon-button {
+        top: 6px;
+        right: 6px;
+    }
+}
+
+
+/* ==================================================
+   EXTRA SMALL SCREEN
+================================================== */
+
+@media (max-width: 400px) {
+
+    header h1 {
+        font-size: 25px;
+    }
+
+
+    .hero h2 {
+        font-size: 31px;
+    }
+
+
+    .small-title {
+        font-size: 11px;
+    }
+
+
+    .section-box h2 {
+        font-size: 25px;
+    }
+}
+
+
+/* ==================================================
+   REDUCED MOTION
+   Untuk pengunjung yang mematikan animasi
+   di pengaturan perangkatnya.
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+
+    .reveal {
+        opacity: 1;
+
+        transform: none;
+    }
+}

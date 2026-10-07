@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Pengaturan karakter -->
+    <meta charset="UTF-8">
+
+    <!-- Responsif untuk HP -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul tab -->
+    <title>Tentang Leon</title>
+
+    <!-- Menggunakan CSS yang sama dengan index -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>✦ Leon ✦</h1>
+
+        <p data-id="headerDesc">
+            • VFX Artist, Pengembang Roblox & Web Developer Pemula
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         SETTINGS (sama dengan index)
+    ========================== -->
+
+    <div class="settings">
+
+        <select id="languageSelect" data-title-id="langLabel" aria-label="Pilih bahasa">
+            <option value="id">🇮🇩 Indonesia</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="zh">🇨🇳 中文</option>
+        </select>
+
+
+        <button
+            id="themeSwitch"
+            class="theme-switch"
+            role="switch"
+            aria-checked="false"
+            data-title-id="titleTheme"
+            title="Ganti mode (T)"
+            aria-label="Ganti mode (T)"
+        >
+            <span class="switch-track">
+                <span class="switch-star s1"></span>
+                <span class="switch-star s2"></span>
+                <span class="switch-star s3"></span>
+                <span class="switch-cloud"></span>
+                <span class="switch-thumb"></span>
+            </span>
+        </button>
+
+
+        <div class="accent-picker">
+
+            <button
+                id="accentButton"
+                class="icon-button"
+                aria-expanded="false"
+                data-title-id="titleAccent"
+                title="Ganti warna (C)"
+                aria-label="Ganti warna (C)"
+            >
+                🎨
+            </button>
+
+            <div class="accent-menu" id="accentMenu">
+                <button class="accent-dot" data-accent="blue"></button>
+                <button class="accent-dot" data-accent="purple"></button>
+                <button class="accent-dot" data-accent="green"></button>
+                <button class="accent-dot" data-accent="pink"></button>
+                <button class="accent-dot" data-accent="orange"></button>
+            </div>
+
+        </div>
+
+
+        <button
+            id="helpToggle"
+            class="icon-button"
+            data-title-id="titleHelp"
+            title="Pintasan keyboard (?)"
+            aria-label="Pintasan keyboard (?)"
+        >
+            ?
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         NAVIGASI
+    ========================== -->
+
+    <nav>
+
+        <a href="index.html" data-id="home">
+            Beranda
+        </a>
+
+        <a href="about.html" class="active" data-id="about">
+            Tentang Saya
+        </a>
+
+    </nav>
+
+
+    <main>
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section class="about-page">
+
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+            <span class="small-title" data-id="aboutLabel">
+                ✦ TENTANG SAYA
+            </span>
+
+            <h2 data-id="aboutTitle">
+                Halo, saya <span>Leon</span>!
+            </h2>
+
+            <p data-id="aboutIntro">
+                Saya adalah seorang VFX Artist dan
+                Pengembang Roblox yang juga sedang
+                belajar Web Development.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             KARTU TENTANG SAYA
+        ========================== -->
+
+        <section class="about-grid">
+
+            <div class="about-card reveal">
+
+                <div class="card-icon">🎮</div>
+
+                <h3 data-id="aboutRobloxTitle">Roblox Studio</h3>
+
+                <p data-id="aboutRobloxDesc">
+                    Saya suka membuat game, sistem,
+                    gameplay, dan berbagai mekanik
+                    menggunakan Roblox Studio dan Lua.
+                </p>
+
+            </div>
+
+
+            <div class="about-card reveal">
+
+                <div class="card-icon">⚡</div>
+
+                <h3 data-id="aboutVfxTitle">VFX</h3>
+
+                <p data-id="aboutVfxDesc">
+                    Saya juga tertarik membuat visual
+                    effects seperti particle, energy effect,
+                    trail, dan berbagai efek lainnya.
+                </p>
+
+            </div>
+
+
+            <div class="about-card reveal">
+
+                <div class="card-icon">🧊</div>
+
+                <h3 data-id="aboutBlenderTitle">Blender</h3>
+
+                <p data-id="aboutBlenderDesc">
+                    Saya menggunakan Blender untuk belajar
+                    membuat model 3D dan asset sederhana.
+                </p>
+
+            </div>
+
+
+            <div class="about-card reveal">
+
+                <div class="card-icon">💻</div>
+
+                <h3 data-id="aboutWebTitle">Web Development</h3>
+
+                <p data-id="aboutWebDesc">
+                    Saya masih pemula dalam Web Development
+                    dan sedang belajar HTML, CSS, serta
+                    JavaScript untuk membuat website.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MAKANAN FAVORIT (BARU)
+        ========================== -->
+
+        <section class="fav-food reveal">
+
+            <!-- Klik pizza untuk hujan pizza 🍕 -->
+            <button
+                class="pizza-button"
+                id="pizzaButton"
+                data-title-id="pizzaTitle"
+                title="Klik aku!"
+                aria-label="Klik aku!"
+            >
+                🍕
+            </button>
+
+            <div class="fav-text">
+
+                <span class="small-title" data-id="favLabel">
+                    ✦ MAKANAN FAVORIT
+                </span>
+
+                <h3 data-id="favTitle">
+                    Pizza!
+                </h3>
+
+                <p data-id="favDesc">
+                    Makanan favorit saya adalah pizza.
+                    Paling enak dimakan sambil membuat VFX
+                    atau bermain Roblox 😄
+                </p>
+
+                <span class="fav-hint" data-id="favHint">
+                    👆 Coba klik pizzanya!
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             BELAJAR
+        ========================== -->
+
+        <section class="about-frame reveal">
+
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+
+
+            <h2 data-id="aboutLearningTitle">
+                ✦ Masih Dalam Proses Belajar
+            </h2>
+
+
+            <p data-id="aboutLearningDesc">
+                Saya masih terus belajar dan meningkatkan
+                kemampuan saya. Saya ingin memahami lebih
+                banyak tentang VFX, game development,
+                3D modeling, dan Web Development.
+            </p>
+
+
+            <a href="index.html" class="main-button" data-id="backHome">
+                ← Kembali ke Beranda
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Back to top -->
+
+    <button id="backToTop" data-title-id="titleTop" title="Kembali ke atas" aria-label="Kembali ke atas">
+        ↑
+    </button>
+
+
+    <!-- Footer -->
+
+    <footer>
+        <p data-id="footer">
+            Dibuat oleh Leon © 2026
+        </p>
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
